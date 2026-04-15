@@ -126,7 +126,7 @@ nav.side{
 }
 .side ul li:last-child a{
     border-radius: 10px;
-    border-bottom-left-radius: 20px;
+    border-bottom-left-radius: 20px; 
     border-bottom-right-radius: 20px;
 }
 .side ul li a:hover{
