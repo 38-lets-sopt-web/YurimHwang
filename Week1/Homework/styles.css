@@ -1,6 +1,6 @@
 /* 찐따같은 글씨체 좀 어떻게 좀 할 수 없나?*/
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,7 +17,7 @@ body{
 header.top{
     height: 80px;
     background-color: rgb(255, 200, 233);
-    display: flex;
+    display: flex;/* 부모에 해당코드 있어야 자식들이 flex 영향 이어받음*/
     position: sticky;
     top: 0;
     width: 100%;
@@ -25,8 +25,8 @@ header.top{
 
 }
 
-header.top>div{
-    flex:1;
+header.top > div{
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,11 +38,17 @@ header.top>div{
     padding-left: 20px;
 }
 
-.top.left img{
-    width:30px;
-    height: 30px;
+/*img 관련 중복코드는 합쳐버리자&봤을때 이해 쉽게*/
+.top img{
     border-radius: 50%;
     cursor: pointer;
+}
+
+.top.left img{
+    width: 30px;
+    height: 30px;
+    /*border-radius: 50%;
+    cursor: pointer; 위에서 공통으로 처리했으니까*/ 
     transition: box-shadow 0.3s;
     
 }
@@ -60,11 +66,13 @@ header.top>div{
     font-size: 1.1rem;
     font-weight: 1000;
     color: #333131;
+    margin: 0; /*h1의 기본여백 지울 것(해당 태그는 기본적으로 위아래 여백을 줌)*/
 }
 
 .top.center p{
     font-size: 0.8rem;
     color: #c12929;
+    margin: 0; /*위와 마찬가지*/
 }
 
 .top.right{
@@ -75,8 +83,8 @@ header.top>div{
 .top.right img{
     width: 32px;
     height: 32px;
-    border-radius: 50%; /* (깃허브로고는 시그니처사진처럼 동그랗게 안해도되나?->해야자*/
-    cursor: pointer;
+    /* border-radius: 50%; (깃허브로고는 시그니처사진처럼 동그랗게 안해도되나?->해야자
+    cursor: pointer;*/
 }
 
 nav.side{
@@ -178,7 +186,7 @@ main.content{
     grid-row: span 2;
 }
 
-#luv h2{
+#love h2{
     font-size: 0.95rem;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -211,7 +219,7 @@ main.content{
     border-radius: 10px;
 }
 
-#myint h2{
+#interest h2{
     font-size: 0.95rem;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -274,7 +282,7 @@ main.content{
 .btn-dislike:hover{background-color:rgb(235, 97, 120);}
 /*열계산 모르겟음 하하하*/
 
-#T0 h2{
+#message h2{
     font-size: 0.95rem;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -302,7 +310,7 @@ main.content{
 }
 
 .message-item::after {
-    content: " 🆒🆙"; 
+    content: "🆒🆙"; 
 }
 
 .footer{
