@@ -1,0 +1,36 @@
+/*전체레이아웃: 화면 중앙에 잡합시키자*/
+main {
+  width: 80%; /*양옆10%씩비워/박스바깥*/
+  margin: 0 auto; /*변수2개:상하/좌우*/
+  padding: 20px; /*박스안쪽*/
+
+  display: flex;
+  flex-direction: column; /*세로로차곡차곡*/
+  gap: 30px; /*main요소들간의 숨구멍*/
+}
+
+/*정확히 삼등분(1주차과제활용?)*/
+header.top {
+  background-color: var(--header-bg);
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  height: 60px;
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+.top-left, .top-center, .top-right {
+  /*동일하게 삼등분나눠먹어*/
+  flex: 0 0 calc(100%/3);
+  /*각 구역안에서 또 정렬해야하니까*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-left {justify-content: flex-start} 
+.top-center {justify-content: center;} 
+.top-right {justify-content: flex-end;}
