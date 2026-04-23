@@ -12,25 +12,45 @@ main {
 /*정확히 삼등분(1주차과제활용?)*/
 header.top {
   background-color: var(--header-bg);
-  color: var(--gray);
   display: flex;
-  align-items: center;
-  padding: 0 60px;
   height: 60px;
+}
+
+/*.top-left, .top-center, .top-right와같음*/
+header.top>div {
+  color: var(--gray);
+  /*동일하게 삼등분나눠먹어*/
+  display: flex;
+  flex: 0 0 calc(100%/3);
+  align-items: center;
+}
+.top-left {
+  justify-content: flex-start;
+  padding-left: 60px;
+} 
+.top-center {
+  justify-content: center;
+} 
+.top-right {
+  justify-content: flex-end;
+  padding-right: 60px;
 }
 
 body {
   background-color: var(--body-bg);
 }
 
-.top-left, .top-center, .top-right {
-  /*동일하게 삼등분나눠먹어*/
-  flex: 0 0 calc(100%/3);
-  /*각 구역안에서 또 정렬해야하니까*/
+/*구현명세의 의도는 위와같은 코드인지?
+  아니면 아래와 같은 코드가 정답인지?
+
+  header.top>div {
+  color: var(--gray);
+  padding: 0 60px;
   display: flex;
-  justify-content: center;
+  flex: 0 0 calc(100%/3);
   align-items: center;
 }
-.top-left {justify-content: flex-start} 
+.top-left {justify-content: flex-start;} 
 .top-center {justify-content: center;} 
 .top-right {justify-content: flex-end;}
+/*
