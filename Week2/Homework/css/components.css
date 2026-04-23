@@ -1,58 +1,31 @@
+header.top {
+  background-color: var(--header-bg);
+}
+
+header.top>div {
+  color: var(--gray);
+}
+
+/*이모지 크기만 키우고싶어서*/
+#refreshBtn {
+  font-size: 30px;  
+  background: none;
+  border: none;
+}
+
 .filter-container {
 background-color: var(--white);
-padding: 20px;
 border-radius: var(--radius);
 }
 
-#filterForm {
-display: grid;
-/*다시돌아온 grid의마법*/
-grid-template-columns: repeat(3, 1fr);
-gap: 20px; /*요소들간의 숨구멍*/
-align-items: center;
-}
-
-.f-title {
-grid-column: span 3; /*3칸을 혼자 다 써랔ㅋ*/
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 10px;
-}
-
 .f-title label, .f-item label {
-width: auto;
 font-size: 1rem;
 font-weight: bold;
-}
-
-/*[1줄에 3개]유형*/
-.f-item {
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 10px;
-}
-
-/*입력창들이 나머지 공간을 꽈악 채우게*/
-.f-title input, .f-item select {flex-direction: row;
-flex: 1;
-}
-
-.f-buttons {
-grid-column: span 3;
-display: grid;
-grid-template-columns: 1fr 1fr; /*정확히반반*/
-gap: 15px;
 }
 
 .btn-apply, .btn-reset {
 background-color: var(--gray);
 color: var(--white);
-border: none;
-border-radius: 8px;
-/*버튼모양*/
-padding: 15px 0;
 font-size: 1rem;
 font-weight: bold;
 /*1주차 활용moment*/
@@ -67,56 +40,25 @@ opacity: 0.8;
 /*table(표)시작해보자꾸나*/
 .table-container {
 background-color: var(--white);
-padding: 20px;
-border-radius: var(--radius);
-margin-top: 20px;
-}
-
-.table-top-bar {
-display: flex;
-justify-content: space-between; /*양옆밀어내라*/
-align-items: center;
-margin-bottom: 20px;
-}
-
-/*버튼뭉침 너무스트레스*/
-.bar-right {
-display: flex;
-gap: 5px;
 }
 
 /*버튼스타일*/
 #deleteBtn, #addBtn, .btn-delete, .btn-add {
 background-color: #222;
 color: white;
-padding: 10px 20px;
-border-radius: 6px;
-border: none;
 font-weight: bold;
 cursor: pointer;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-table-layout: fixed;
 }
 
 /*여기파트만 색상 상수화포기!*/
 th {
 background-color: #f8f9fa; /*스카이회색*/
-padding: 15px 10px;
 border-bottom: 2px solid #eee;
 font-weight: bold;
-text-align: center;
 }
 
 td {
-padding: 15px 10px;
 border-bottom: 1px solid #f1f1f1;
-text-align: center;
-vertical-align: middle;
-word-break: break-all; /*글자넘치지않게*/
 }
 
 /*제목밑줄디테일*/
@@ -132,54 +74,28 @@ text-decoration: underline;
 /*하단total영역*/
 .table-footer td{
 background-color: #f8f9fa;
-padding: 20px;
 font-weight: bold;
 }
 
 #total-amount {
 color: #3182ce;
-text-align: right;
-padding-right: 50px;
 }
 
 .modal-out {
-position: fixed;
-top: 0; left: 0;
-width: 100%; height: 100%;
 background: rgba(0, 0, 0, 0.5); /*배경색차이나게(어둡게)*/
-display: none; /*js의몫*/
-justify-content: center;
-align-items: center;
-z-index: 1000;
 }
 
 .modal-content {
 background: var(--white);
-padding: 30px;
-border-radius: 20px;
-width: 450px;
-position: relative;
-}
-
-/*모달내부 2열배치*/
-/*유형/금액,카테고리/결제수단*/
-.two-row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
-margin-bottom: 20px;
 }
 
 input,select {
 border: 1px solid #eee;
-border-radius: 5px;
-padding: 10px;
 background-color: var(--white);
 }
 
 .btn-add {
 background-color: var(--black);
 color: var(--white);
-padding: 10px 25px;
 font-weight: bold;
 }
