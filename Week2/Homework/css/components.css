@@ -1,0 +1,101 @@
+header.top {
+  background-color: var(--header-bg);
+}
+
+header.top>div {
+  color: var(--gray);
+}
+
+/*이모지 크기만 키우고싶어서*/
+#refreshBtn {
+  font-size: 30px;  
+  background: none;
+  border: none;
+}
+
+.filter-container {
+background-color: var(--white);
+border-radius: var(--radius);
+}
+
+.f-title label, .f-item label {
+font-size: 1rem;
+font-weight: bold;
+}
+
+.btn-apply, .btn-reset {
+background-color: var(--gray);
+color: var(--white);
+font-size: 1rem;
+font-weight: bold;
+/*1주차 활용moment*/
+transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-apply:hover, .btn-reset:hover {
+transform: translateY(+2px); /*딸깍포인트*/
+opacity: 0.8;
+}
+
+/*table(표)시작해보자꾸나*/
+.table-container {
+background-color: var(--white);
+}
+
+/*버튼스타일*/
+#deleteBtn, #addBtn, .btn-delete, .btn-add {
+background-color: #222;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+
+/*여기파트만 색상 상수화포기!*/
+th {
+background-color: #f8f9fa; /*스카이회색*/
+border-bottom: 2px solid #eee;
+font-weight: bold;
+}
+
+td {
+border-bottom: 1px solid #f1f1f1;
+}
+
+/*제목밑줄디테일*/
+td:nth-child(2) {
+color: #333;
+text-decoration: underline;
+}
+
+/*수입/지출색상구분*/
+.income { color: #3182ce; font-weight: bold; }
+.expense { color: #e53e3e; font-weight: bold; }
+
+/*하단total영역*/
+.table-footer td{
+background-color: #f8f9fa;
+font-weight: bold;
+}
+
+#total-amount {
+color: #3182ce;
+}
+
+.modal-out {
+background: rgba(0, 0, 0, 0.5); /*배경색차이나게(어둡게)*/
+}
+
+.modal-content {
+background: var(--white);
+}
+
+input,select {
+border: 1px solid #eee;
+background-color: var(--white);
+}
+
+.btn-add {
+background-color: var(--black);
+color: var(--white);
+font-weight: bold;
+}
