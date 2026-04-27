@@ -22,15 +22,17 @@ function whiteboard(data) {
   let total = 0;
 
   //data항목 공장 무한가동해라
-  myExpenses.forEach(function (expense) {
-    //붕어빵 틀(row)
+  //붕어빵 틀(row)
+  data.forEach(function (expense, index) {
     const row = document.createElement("tr");
 
     //틀에내용 채워넣기
     //td<tr(개념의크기)
     //백틱 활용의 순간
+    //삭제할 때,몇번째데이터지? 추가
+    row.dataset.index = index;
     row.innerHTML = `
-      <td><input type="checkbox" class="item-check"></td>
+      <td><input type="checkbox" class="item-check" data-index="${index}"></td>
       <td>${expense.title}</td>
       <td>${expense.amount}</td>
       <td>${expense.date}</td>
@@ -88,6 +90,7 @@ if (addForm) {
 
     //입력값 싹 호출해보자
     const userTitle = document.querySelector("#add-title").value;
+    const userType = document.querySelector("#modal-type").value;
     const userAmount = document.querySelector("#add-amount").value;
     const userDate = document.querySelector("#add-date").value;
     const userCategory = document.querySelector("#add-category").value;
@@ -103,7 +106,7 @@ if (addForm) {
     //new 데이터 덩어리
     const newItem = {
       title: userTitle,
-      type: userType,
+      type: userType, //항상정의필요
       amount: Number(userAmount),
       date: userDate,
       category: userCategory,
@@ -119,4 +122,34 @@ if (addForm) {
     modal.style.display = "none";
     addForm.reset(); //입력창 싸악 비울 것  
   });
+
+  //필터링 비서 추가고용
+  const filterMate = document.querySelector("#filterMate");
+  filterMate.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const searchTitle = document.querySelector("#search-title").value;
+    const filterType = document.querySelector("#f-type").value;
+
+    const filtered = myExpenses.filter(item => {
+      const matchTitle = item.title.toLowerCase().includes(searchTitle);
+      const matchType = (filterType === "all") || (item.type === filterType);
+      return matchTitle && matchType;
+    });
+    whiteboard(filtered); //필터링된 결과만 GoOut
+  });
+
+  //삭제 비서 추가고용
+  const deleteBtn = document.querySelector("#deleteBtn");
+  deleteBtn.addEventListener("click", function () {
+    const checkbox = document.querySelectorAll(".item-check:checked");
+    if (checkbox.length === 0) return alert("삭제할 항목 SelectPlz");
+
+    //체크Out 빼고 다시 창고에 저장
+    const checkedbox = Array.from(checkbox).map(cb => Number(cb.closest('tr').dataset.index));
+    myExpenses = myExpenses.filter((_, index) => !checkedbox.includes(index));
+
+    localStorage.setItem("expenseData", JSON.stringify(myExpenses));
+    whiteboard(myExpenses);
+  });
+
 }
