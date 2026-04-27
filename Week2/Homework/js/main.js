@@ -1,4 +1,3 @@
-import { functions } from 'stylus';
 import { expenses } from './data.js';
 
 //(전용창고)로컬스토리지에 data넣어줄게-> 짐 싸기
@@ -31,6 +30,7 @@ function whiteboard(data) {
     //td<tr(개념의크기)
     //백틱 활용의 순간
     //삭제할 때,몇번째데이터지? 추가
+    row.dataset.index = index;
     row.innerHTML = `
       <td><input type="checkbox" class="item-check" data-index="${index}"></td>
       <td>${expense.title}</td>
@@ -124,8 +124,8 @@ if (addForm) {
   });
 
   //필터링 비서 추가고용
-  const filtermate = document.querySelector("#filtermate");
-  filtermate.addEventListener("submit", function (event) {
+  const filterMate = document.querySelector("#filterMate");
+  filterMate.addEventListener("submit", function (event) {
     event.preventDefault();
     const searchTitle = document.querySelector("#search-title").value;
     const filterType = document.querySelector("#f-type").value;
@@ -135,7 +135,7 @@ if (addForm) {
       const matchType = (filterType === "all") || (item.type === filterType);
       return matchTitle && matchType;
     });
-    whiteboard(filteredData); //필터링된 결과만 GoOut
+    whiteboard(filtered); //필터링된 결과만 GoOut
   });
 
   //삭제 비서 추가고용
