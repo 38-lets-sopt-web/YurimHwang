@@ -44,12 +44,12 @@
             <option value="expense">지출</option>
           </select>
         </div>
-        
+
         <div class="f-item">
           <label for="f-category">카테고리</label>
           <input type="text" id="f-category" placeholder="전체">
         </div>
-        
+
         <div class="f-item">
           <label for="f-payment">결제수단</label>
           <input type="text" id="f-payment" placeholder="전체">
@@ -65,46 +65,48 @@
     <!-- table=표(이것이 네이밍의 이유) -->
     <section class="table-container">
       <!-- class명? 구조정의/구조내위치정의 순으로 지어봤는데 어떤 네이밍 합리적인건지 -->
-      <div class="table-top-bar"> 
-        <div class="bar-left">  
-          <select id="option-date"> 
-            <option value="desc">날짜 내림차순</option> 
-            <option value="asc">날짜 오름차순</option>  
-          </select> 
-        </div>  
+      <div class="table-top-bar">
+        <div class="bar-left">
+          <select id="option-date">
+            <option value="desc">날짜 내림차순</option>
+            <option value="asc">날짜 오름차순</option>
+          </select>
+        </div>
 
-        <div class="bar-right"> 
-          <button type="button" id="deleteBtn" class="btn-delete">선택 삭제</button>  
-          <button type="button" id="addBtn" class="btn-add">추가</button> 
-        </div>  
-      </div>  
+        <div class="bar-right">
+          <button type="button" id="deleteBtn" class="btn-delete">선택 삭제</button>
+          <button type="button" id="addBtn" class="btn-add">추가</button>
+        </div>
+      </div>
 
       <!-- HTML의 table태그로 구현하라(숙지해야 할 개념 축복넘쳐나신다하하) -->
       <!-- 표 태그는 마치 '아파트 공사'와 같음/층을 나누고, 그 안에 호수(칸)를 만드는 과정 -->
-      <table> 
-        <thead> 
+      <table>
+        <thead>
           <!-- th(의미하는바)/td<tr(개념의크기) -->
-          <tr>  
+          <tr>
             <!-- html(주인)/id는 나중에 JS(기능비서)가 소환해야 할 '전화번호' -->
-            <th><input type="checkbox" id="check-all"></th> 
-            <th>제목</th> 
-            <th>금액</th> 
-            <th>날짜</th> 
-            <th>카테고리</th> 
-            <th>결제수단</th> 
-          </tr> 
-        </thead>  
+            <th><input type="checkbox" id="check-all"></th>
+            <th>제목</th>
+            <th>금액</th>
+            <th>날짜</th>
+            <th>카테고리</th>
+            <th>결제수단</th>
+          </tr>
+        </thead>
 
-        <tbody id="expense-list"></tbody>  
+        <tbody id="expense-list"></tbody>
 
-        <tfoot> 
-          <tr class="table-total">  
+        <tfoot>
+          <tr class="table-total">
             <!-- colspan="n" (칸 합치기 마법) -->
             <!-- 금액 항목 스타일(심화미션)을 해내지 못해, +247600(쉼표없이) 그대로 나타냄 -->
-            <td colspan="2">total</td> <td id="total-amount" colspan="4">+247600</td> </tr>  
-        </tfoot>  
-      </table>  
-    </section>  
+            <td colspan="2">total</td>
+            <td id="total-amount" colspan="4">+247600</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
   </main>
 
   <!-- 내역추가모달 -->
