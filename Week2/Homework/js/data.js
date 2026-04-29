@@ -90,7 +90,7 @@ export const expenses = [
   {
     id: 12,
     title: '네일아트',
-    date: '2026-04-1',
+    date: '2026-04-01',
     category: '품위유지비',
     payment: '체크카드',
     amount: -35000,

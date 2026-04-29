@@ -1,13 +1,13 @@
-header.top {
+header.header-title {
   background-color: var(--header-bg);
 }
 
-header.top>div {
+header.header-title>div {
   color: var(--gray);
 }
 
 /*이모지 크기만 키우고싶어서*/
-#refreshBtn {
+.refreshBtn {
   font-size: 30px;
   background: none;
   border: none;
@@ -47,8 +47,6 @@ header.top>div {
 }
 
 /*버튼스타일*/
-#deleteBtn,
-#addBtn,
 .btn-delete,
 .btn-add {
   background-color: #222;
@@ -87,12 +85,12 @@ td:nth-child(2) {
 }
 
 /*하단total영역*/
-.table-footer td {
+.table-total td {
   background-color: #f8f9fa;
   font-weight: bold;
 }
 
-#total-amount {
+.total-amount {
   color: #3182ce;
 }
 
