@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /*<찐따같은 글씨체> 탈출 대작전!*/
+  /*굳이인거아는데 찾아서 적용해보고싶었음*/
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--black);
+  /*너무답답하지않게*/
+  line-height: 1.5;
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: none;
+  /*난 이제부터 변신할때 0.2초동안 부드럽게 변할거야*/
+  transition: opacity 0.2s, transform 0.2s;
+}

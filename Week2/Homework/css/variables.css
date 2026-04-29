@@ -1,0 +1,25 @@
+:root {
+  /*자주쓰는색상정의*/
+  /*easy하게찾아쓰도록*/
+  --header-bg: rgb(227, 192, 213);
+  /*상단빈티지핑크*/
+  --body-bg: #ececec;
+  /*배경옅은회색*/
+  --white: #ffffff;
+  --gray: #575252;
+  --lessgray: #444;
+  /*포인트색상*/
+  --color-income: #3b82f6;
+  /*수입파랑*/
+  --color-expense: #ef4444;
+  /*지출빨강*/
+  --color-border: rgb(255, 234, 248);
+
+  /*그림자및둥글기*/
+  /*--shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+  --radius: 8px;
+
+  /*모달관련정의*/
+  --modal-padding: 25px;
+  --input-bg: #ffffff;
+}
