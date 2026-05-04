@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H.wang의 가계부</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header class="header-title">
+    <!-- 버튼 type 속성 정의 -->
+    <!-- 버튼의설명서/화면읽기도구(스크린음성리더)/웹접근성 -->
+    <div class="header-title-left">
+      <button type="button" id="refreshBtn" class="refreshBtn" aria-label="새로고침">🆒</button>
+    </div>
+    <div class="header-title-center">
+      <h1>H.wang's 가계부</h1>
+    </div>
+    <div class="header-title-right"><span>SOPT 38th WEB</span></div>
+  </header>
+
+  <main>
+    <section class="filter-container">
+      <h2 class="filter-title-text">검색 필터</h2>
+
+      <form id="filterForm" class="filterForm">
+        <!-- f-()에서의 f=filter을 의미함/너무 길어서 그만.. -->
+        <!-- filter-row를 통해 공통으로 묶어봄 -->
+        <div class="filter-row f-title">
+          <label for="search-title">제목</label>
+          <input type="text" id="search-title" name="searchTitle" placeholder="내역을 입력하세요">
+        </div>
+
+        <div class="f-item">
+          <label for="f-type">유형</label>
+          <select id="f-type" name="filterType">
+            <option value="all">전체</option>
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
+          </select>
+        </div>
+
+        <div class="f-item">
+          <label for="f-category">카테고리</label>
+          <input type="text" id="f-category" name="filterCategory" placeholder="전체">
+        </div>
+
+        <div class="f-item">
+          <label for="f-payment">결제수단</label>
+          <input type="text" id="f-payment" name="filterPayment" placeholder=" 전체">
+        </div>
+
+        <div class="f-buttons">
+          <button type="submit" class="btn-apply">적용</button>
+          <button type="button" class="btn-reset">초기화</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- table=표(이것이 네이밍의 이유) -->
+    <section class="table-container">
+      <!-- class명? 구조정의/구조내위치정의 순으로 지어봤는데 어떤 네이밍 합리적인건지 -->
+      <div class="table-top-bar">
+        <div class="bar-left">
+          <select id="option-date">
+            <option value="desc">날짜 내림차순</option>
+            <option value="asc">날짜 오름차순</option>
+          </select>
+        </div>
+
+        <div class="bar-right">
+          <button type="button" id="deleteBtn" class="btn-delete">선택 삭제</button>
+          <button type="button" id="addBtn" class="btn-add">추가</button>
+        </div>
+      </div>
+
+      <!-- HTML의 table태그로 구현하라(숙지해야 할 개념 축복넘쳐나신다하하) -->
+      <!-- 표 태그는 마치 '아파트 공사'와 같음/층을 나누고, 그 안에 호수(칸)를 만드는 과정 -->
+      <table>
+        <thead>
+          <!-- th(의미하는바)/td<tr(개념의크기) -->
+          <tr>
+            <!-- html(주인)/id는 나중에 JS(기능비서)가 소환해야 할 '전화번호' -->
+            <th><input type="checkbox" id="check-all"></th>
+            <th>제목</th>
+            <th>금액</th>
+            <th>날짜</th>
+            <th>카테고리</th>
+            <th>결제수단</th>
+          </tr>
+        </thead>
+
+        <tbody id="expense-list"></tbody>
+
+        <tfoot>
+          <tr class="table-total">
+            <!-- colspan="n" (칸 합치기 마법) -->
+            <!-- 금액 항목 스타일(심화미션)을 해내지 못해, +247600(쉼표없이) 그대로 나타냄 -->
+            <td colspan="2">total</td>
+            <td id="total-amount" class="total-amount" colspan="4">+247600</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+  </main>
+
+  <!-- 내역추가모달 -->
+  <div id="modal-backdrop" class="modal-out">
+    <div class="modal-content">
+      <!-- 아이고.. 닫기버튼은 대체 무엇으로.. -->
+      <button type="button" id="closeBtn" class="btn-close">✖️</button>
+
+      <h2 class="modal-title">내역 추가</h2>
+
+      <form id="form-add">
+        <div class="modal-row">
+          <label for="add-title">제목</label>
+          <input type="text" id="add-title" name="title" placeholder="제목을 입력하세요" required>
+        </div>
+        <!-- 모달form내의 row에 두가지 요소가 있길래-> two-row로 -->
+        <div class="modal-row two-row">
+          <div class="modal-item">
+            <label for="modal-type">유형</label>
+            <!-- 드롭다운 적용해야하니까 id호출기능 -->
+            <select id="modal-type" name="type">
+              <option value="income">수입 (+)</option>
+              <option value="expense">지출 (-)</option>
+            </select>
+          </div>
+          <div class="modal-item">
+            <label for="add-amount">금액</label>
+            <input type="number" id="add-amount" name="amount" placeholder="금액을 입력하세요" min="1" required>
+            <!-- min 설정이유는 최소 1원 이상의 양수만 입력할 수 있게 -->
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <label for="add-date">날짜</label>
+          <input type="date" id="add-date" name="date" required>
+        </div>
+
+        <div class="modal-row two-row">
+          <div class="modal-item">
+            <label for="add-category">카테고리</label>
+            <select id="add-category" name="category" required>
+              <option value="">선택</option>
+              <option value="식비">식비</option>
+              <option value="월급">월급</option>
+              <option value="교통">교통</option>
+              <option value="문화">문화</option>
+              <option value="의료비">의료비</option>
+              <option value="품위유지비">품위유지비</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="modal-item">
+            <label for="add-payment">결제수단</label>
+            <select id="add-payment" name="payment" required>
+              <option value="">선택</option>
+              <option value="현금">현금</option>
+              <option value="체크카드">체크카드</option>
+              <option value="신용카드">신용카드</option>
+            </select>
+          </div>
+        </div>
+        <!-- 위 tabl(표) 변수명 button-add랑 겹치지않게 하기위해 변수명 변주 -->
+        <button type="submit" id="submitbtn" class="btn-add-confirm">추가</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
