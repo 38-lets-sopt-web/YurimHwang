@@ -12,7 +12,7 @@ function StatusBoard({ timeLeft, score, successCount, failCount }) {
       {/*남은시간섹션*/}
       <StatusCard>
         <span>남은 시간</span>
-        {/*볼드체로*/}
+        {/*볼드체태그로*/}
         <b>{timeLeft}</b>
       </StatusCard>
 

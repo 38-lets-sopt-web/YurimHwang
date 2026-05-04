@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/common/Header/Header';
-import GamePage from './components/pages/GamePage/GamePage';
+import GamePage from './components/pages/gamePage/gamePage';
 import RankPage from './components/pages/RankPage/RankPage';
 
 function App() {
